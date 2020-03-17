@@ -39,19 +39,18 @@ class VirtualViewActivity : AppCompatActivity() {
                         requestBuilder.submit(reqWidth, reqHeight)
                     }
                     val imageTarget = ImageTarget(imageBase)
-                    requestBuilder.into(imageTarget as ImageView)
+                    requestBuilder.into(imageTarget)
                 }
             }
 
-            override fun getBitmap(uri: String, reqWidth: Int, reqHeight: Int,
-                                   lis: ImageLoader.Listener) {
+            override fun getBitmap(uri: String, reqWidth: Int, reqHeight: Int, lis: ImageLoader.Listener) {
                 if (isValidContextForGlide(this@VirtualViewActivity)) {
                     val requestBuilder: RequestBuilder<*> = Glide.with(this@VirtualViewActivity).asBitmap().load(uri)
                     if (reqWidth > 0 || reqHeight > 0) {
                         requestBuilder.submit(reqWidth, reqHeight)
                     }
                     val imageTarget = ImageTarget(lis)
-                    requestBuilder.into(imageTarget as ImageView)
+                    requestBuilder.into(imageTarget)
                 }
             }
         })
@@ -90,4 +89,8 @@ class VirtualViewActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "VirtualViewActivity"
     }
+}
+
+private fun Any.into(imageTarget: ImageTarget) {
+
 }

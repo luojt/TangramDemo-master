@@ -47,7 +47,7 @@ class TangramActivity : AppCompatActivity() {
     private fun initTangram() { // 初始化 Tangram 环境
         TangramBuilder.init(this, object : IInnerImageSetter {
             override fun <IMAGE : ImageView?> doLoadImageUrl(view: IMAGE, url: String?) {
-                Glide.with(this@TangramActivity).load(url).into(view as ImageView)
+                Glide.with(this@TangramActivity).load(url).into(view)
             }
         }, ImageView::class.java)
         // 初始化 TangramBuilder
@@ -83,7 +83,7 @@ class TangramActivity : AppCompatActivity() {
                         requestBuilder.submit(reqWidth, reqHeight)
                     }
                     val imageTarget = ImageTarget(imageBase)
-                    requestBuilder.into(imageTarget as ImageView)
+                    requestBuilder.into(imageTarget)
                 }
             }
 
@@ -95,7 +95,7 @@ class TangramActivity : AppCompatActivity() {
                         requestBuilder.submit(reqWidth, reqHeight)
                     }
                     val imageTarget = ImageTarget(lis)
-                    requestBuilder.into(imageTarget as ImageView)
+                    requestBuilder.into(imageTarget)
                 }
             }
         })
@@ -143,4 +143,12 @@ class TangramActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "TangramActivity"
     }
+
+    private fun Any.into(imageTarget: ImageTarget) {
+
+    }
+}
+
+private fun <IMAGE> Any.into(view: IMAGE) {
+
 }
