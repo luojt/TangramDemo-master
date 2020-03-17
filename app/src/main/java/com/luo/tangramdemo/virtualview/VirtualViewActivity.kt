@@ -89,8 +89,10 @@ class VirtualViewActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "VirtualViewActivity"
     }
+
+    private fun Any.into(imageTarget: ImageTarget) {
+
+    }
 }
 
-private fun Any.into(imageTarget: ImageTarget) {
 
-}

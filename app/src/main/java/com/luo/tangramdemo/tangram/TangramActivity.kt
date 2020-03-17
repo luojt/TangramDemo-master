@@ -147,8 +147,10 @@ class TangramActivity : AppCompatActivity() {
     private fun Any.into(imageTarget: ImageTarget) {
 
     }
+
+    private fun <IMAGE> Any.into(view: IMAGE) {
+
+    }
 }
 
-private fun <IMAGE> Any.into(view: IMAGE) {
 
-}
