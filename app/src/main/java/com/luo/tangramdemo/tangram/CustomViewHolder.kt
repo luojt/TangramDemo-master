@@ -21,27 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.luo.tangramdemo.tangram
 
-package com.luo.tangramdemo.tangram;
-
-import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
-
-import com.tmall.wireless.tangram.structure.viewcreator.ViewHolderCreator;
+import android.content.Context
+import android.view.View
+import android.widget.TextView
+import com.tmall.wireless.tangram.structure.viewcreator.ViewHolderCreator
 
 /**
  * Created by luojiongtian
  */
-public class CustomViewHolder extends ViewHolderCreator.ViewHolder {
-    public TextView textView;
-
-    public CustomViewHolder(Context context) {
-        super(context);
-    }
-
-    @Override
-    protected void onRootViewCreated(View view) {
-        textView = (TextView) view;
+class CustomViewHolder(context: Context?) : ViewHolderCreator.ViewHolder(context) {
+    var textView: TextView? = null
+    override fun onRootViewCreated(view: View) {
+        textView = view as TextView
     }
 }

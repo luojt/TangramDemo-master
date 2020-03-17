@@ -21,37 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.luo.tangramdemo.tangram
 
-package com.luo.tangramdemo.tangram;
-
-import androidx.annotation.NonNull;
-import android.widget.TextView;
-
-import com.tmall.wireless.tangram.structure.BaseCell;
-import com.tmall.wireless.tangram.support.ExposureSupport;
-
-import java.util.Locale;
+import android.widget.TextView
+import com.tmall.wireless.tangram.structure.BaseCell
+import com.tmall.wireless.tangram.support.ExposureSupport
+import java.util.*
 
 /**
  * Created by luojiongtian
  */
-public class CustomHolderCell extends BaseCell<TextView> {
-
-    @Override
-    public void bindView(@NonNull TextView view) {
+class CustomHolderCell : BaseCell<TextView>() {
+    override fun bindView(view: TextView) {
         if (pos % 2 == 0) {
-            view.setBackgroundColor(0xff000fff);
+            view.setBackgroundColor(-0xfff001)
         } else {
-            view.setBackgroundColor(0xfffff000);
+            view.setBackgroundColor(-0x1000)
         }
-        view.setText(String.format(Locale.CHINA, "%s%d: %s", getClass().getSimpleName(), pos,
-                optParam("text")));
-        view.setOnClickListener(this);
+        view.text = String.format(Locale.CHINA, "%s%d: %s", javaClass.simpleName, pos, optParam("text"))
+        view.setOnClickListener(this)
         if (serviceManager != null) {
-            ExposureSupport exposureSupport = serviceManager.getService(ExposureSupport.class);
-            if (exposureSupport != null) {
-                exposureSupport.onTrace(view, this, type);
-            }
+            val exposureSupport = serviceManager!!.getService(ExposureSupport::class.java)
+            exposureSupport?.onTrace(view, this, type)
         }
     }
 }
